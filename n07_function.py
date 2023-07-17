@@ -153,3 +153,4 @@ def test02():
 test02()
 
 print_star(40, "函数")
+# 20230718 第一次使用Github管理代码。
