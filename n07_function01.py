@@ -188,3 +188,6 @@ def fun02(m):
 print("a=", a)
 print("id(a)=", id(a))
 fun02(a)
+
+
+
