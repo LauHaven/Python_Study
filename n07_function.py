@@ -132,7 +132,7 @@ print_star(40, "函数使用全局变量和局部变量的效率")
 
 def test01():
     start = time.time()
-    for i in range(100000000):
+    for i in range(1000000):
         math.sqrt(30)
     end = time.time()
     print("耗时{0}：".format(end - start))
@@ -144,7 +144,7 @@ test01()
 def test02():
     start = time.time()
     b = math.sqrt
-    for i in range(100000000):
+    for i in range(1000000):
         b(30)
     end = time.time()
     print("耗时{0}：".format(end - start))
@@ -152,5 +152,39 @@ def test02():
 
 test02()
 
-print_star(40, "函数")
+print_star(40, "函数参数的传递")
 # 20230718 第一次使用Github管理代码。
+# 参数的传递：从实参到形参的赋值操作
+# 具体操作分两类：（1）对“可变对象”进行“写操作”，直接作用域对象本身；（2）、对“不可变对象”进行“写操作”，会产生一个新的“对象空间”。
+
+# 传递可变对象
+a = [10, 20]
+
+
+def fun01(m):
+    print(id(m))
+    print(type(m))
+    m.append(30)
+    print(m)
+
+
+print(a)
+fun01(a)
+print(a)
+print(id(a))
+
+# 传递不可变对象（int,float,string,tuple,boolean)
+a = 100
+
+
+def fun02(m):
+    print("m=", m)
+    print("id(m)", id(m))
+    m = m + 200
+    print("m=", m)
+    print("id(m)=", id(m))
+
+
+print("a=", a)
+print("id(a)=", id(a))
+fun02(a)
