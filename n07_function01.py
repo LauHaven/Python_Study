@@ -168,10 +168,11 @@ def fun01(m):
     print(m)
 
 
+print("fun01......")
 print(a)
 fun01(a)
 print(a)
-print(id(a))
+print(id(a), "\n")
 
 # 传递不可变对象（int,float,string,tuple,boolean)
 a = 100
@@ -179,15 +180,80 @@ a = 100
 
 def fun02(m):
     print("m=", m)
-    print("id(m)", id(m))
+    print("id(m)=", id(m))
     m = m + 200
     print("m=", m)
     print("id(m)=", id(m))
 
 
+print("fun02......")
 print("a=", a)
 print("id(a)=", id(a))
 fun02(a)
+print("\n")
+
+a = (10, 10, [3, 4])
 
 
+def fun03(m):
+    m[2][0] = 888
+    print("m=", m, "id(m)=", id(m))
 
+
+print("fun03......")
+print("a=", a, "id(a)=", id(a))
+fun03(a)
+print("a=", a, "id(a)=", id(a), "\n")
+
+
+# 参数的几种类型
+# 位置参数
+
+def f1(a, b, c):
+    print(a, b, c)
+
+
+# 位置参数
+print('位置参数')
+f1(1, 2, 3)
+# 命名参数
+print('命名参数')
+f1(c=1, b=2, a=3);
+
+
+def f2(a, b, c=30, d=40):
+    print(a, b, c, d)
+
+
+# 默认值参数,必须再其他参数的后面
+print("默认值参数")
+f2(1, 2)
+f2(1, 2, 3)
+f2(1, 2, 3, 4)
+f2(d=1, c=2, b=3, a=4)
+
+
+# 可变参数
+def f3(a, b, *c):  # *c表示元组
+    print(a, b, c)
+
+
+print("可变参数*")
+f3(1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+
+def f4(a1, b, **c1):
+    print(a1, b, c1)
+
+
+print("可变参数**")
+f4(1, 2, name="LI", age=80, address="dongguan")
+
+
+# 带星的参数在前面，后面新增的参数再调用时必须使用命名参数传递
+def f5(*a, b, c):
+    print(a, b, c)
+
+
+print("强制命名")
+f5(1, 2, 3, 4, 5, b=6, c=7)
